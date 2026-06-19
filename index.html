@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 均衡生活提案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #fafaf9;
+            color: #1c1c1c;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Hero 区 */
+        .hero {
+            margin-top: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            color: #111;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 520px;
+            border-left: 3px solid #d4d4d4;
+            padding-left: 1.2rem;
+        }
+
+        /* 通用标题层级 */
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 540;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+            color: #222;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 0.4rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-top: 1.8rem;
+            margin-bottom: 0.6rem;
+            color: #2a2a2a;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #3a3a3a;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.25);
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* 亮点网格 */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 2rem;
+            margin: 1.8rem 0 0.5rem;
+        }
+
+        .highlight-item {
+            background: #ffffff;
+            padding: 1.2rem 1rem 1rem 1rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .highlight-item .icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .highlight-item h4 {
+            font-weight: 510;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+            color: #1a1a1a;
+        }
+
+        .highlight-item p {
+            font-size: 0.9rem;
+            color: #5a5a5a;
+            margin-bottom: 0;
+        }
+
+        /* 使用建议卡片 */
+        .suggestion-card {
+            background: #f4f4f2;
+            padding: 1.6rem 1.8rem;
+            border-radius: 20px;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .suggestion-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .suggestion-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.6rem;
+            position: relative;
+            color: #333;
+        }
+
+        .suggestion-card li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            font-weight: 700;
+            color: #888;
+        }
+
+        .faq-mini {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 16px;
+            padding: 1.3rem 1.5rem;
+            margin: 2.2rem 0;
+        }
+
+        .faq-mini dt {
+            font-weight: 520;
+            margin-bottom: 0.3rem;
+            color: #1e1e1e;
+        }
+
+        .faq-mini dd {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .faq-mini dd:last-child {
+            margin-bottom: 0;
+        }
+
+        .notice-box {
+            background: #f0f0ee;
+            border-left: 4px solid #b0b0b0;
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            margin: 2.2rem 0 1.5rem;
+            font-size: 0.9rem;
+            color: #4a4a4a;
+        }
+
+        .footer-text {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .highlight-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .suggestion-card {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (min-width: 800px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>华体会 · 日常里的平衡感</h1>
+            <div class="subhead">
+                不急不赶，把节奏调回自己这边。一个关于体验与选择的空间。
+            </div>
+        </div>
+
+        <!-- 介绍段落 / 主题展开 -->
+        <p>
+            生活中常有这样的时刻：想要从重复的轨迹里跳脱出来，找点新鲜的、有质感的东西试试。<a href="https://officialm-hth.com.cn">华体会</a>的出发点正是如此——不是提供什么立竿见影的解决方案，而是搭建一处可以安静浏览、自主判断的角落。内容围绕运动、休闲与轻探索展开，不鼓吹狂热，只呈现真实可感的信息。
+        </p>
+
+        <p>
+            无论是测试自己的耐力边界，还是想找个周末的新玩法，这里都试着把值得关注的东西整理清楚。名字叫<strong>华体会</strong>，但内核更接近一种「温和的尝试」——保持好奇，也保持克制。
+        </p>
+
+        <!-- 亮点：四个特征 -->
+        <h2>几个值得留意的特点</h2>
+        <div class="highlight-grid">
+            <div class="highlight-item">
+                <div class="icon">⚖️</div>
+                <h4>内容不偏激</h4>
+                <p>没有速成标题，拒绝夸大表述，只讲实际体验与观察。</p>
+            </div>
+            <div class="highlight-item">
+                <div class="icon">🧩</div>
+                <h4>覆盖多场景</h4>
+                <p>从户外轻运动到室内静修，适合不同性格与阶段。</p>
+            </div>
+            <div class="highlight-item">
+                <div class="icon">📄</div>
+                <h4>信息可验证</h4>
+                <p>每个推荐或方法都附有出处或背景说明，鼓励自己判断。</p>
+            </div>
+            <div class="highlight-item">
+                <div class="icon">🔄</div>
+                <h4>更新有节奏</h4>
+                <p>不追求日更轰炸，按主题整合，减少信息过载。</p>
+            </div>
+        </div>
+
+        <!-- 使用建议 -->
+        <h2>可以怎么用</h2>
+        <div class="suggestion-card">
+            <ul>
+                <li><strong>快速浏览</strong> — 先看分类标题，找到当下感兴趣的方向，再细读内容。</li>
+                <li><strong>收藏备查</strong> — 有些路线或方法需要天气、装备配合，标记下来以后慢慢试。</li>
+                <li><strong>对比参考</strong> — 同一个活动可能有不同人的记录，横向对比后再决定。</li>
+                <li><strong>保持开放</strong> — 不把它当作唯一标准，而是众多信息来源之一。</li>
+            </ul>
+        </div>
+
+        <!-- 场景举例 -->
+        <h3>一个典型场景</h3>
+        <p>
+            周末上午，不想一直闷在屋里，又不想人挤人。打开<a href="https://officialm-hth.com.cn">华体会</a>，翻到「城市漫游」分类，发现一条沿河步道的记录——不网红，不商业，只有路程长度、沿途设施和几张实拍。带上水，直接出发。回来之后觉得刚好，松弛且满足。
+        </p>
+
+        <!-- FAQ 摘要 -->
+        <h2>几句常问的回答</h2>
+        <dl class="faq-mini">
+            <dt>内容适合所有人吗？</dt>
+            <dd>大多数内容面向普通成年人，部分涉及基础体能或特定环境，建议量力而行。</dd>
+            <dt>更新频率怎样？</dt>
+            <dd>每周 2–3 次主题更新，偶尔有汇总专题，避免碎片化。</dd>
+            <dt>是否接受投稿或建议？</dt>
+            <dd>目前以内部整理为主，但欢迎通过站内渠道提出想法。</dd>
+        </dl>
+
+        <!-- 可信但克制的说明 -->
+        <div class="notice-box">
+            <strong>· 阅读提示 ·</strong> 所有内容仅供参考，不构成专业指导。具体活动请根据自身条件、当地法规及环境情况自行评估。<br>
+            平台不会以任何形式索取敏感个人信息，也从未授权第三方代理服务。
+        </div>
+
+        <!-- 结语 / 自然的链接嵌入 -->
+        <p>
+            如果你正好在寻找一个不那么嘈杂的信息源，不妨把<a href="https://officialm-hth.com.cn">华体会</a>放进收藏夹。它不会追着你推送，也不会给出非黑即白的建议——只是安静地放着一些真实记录，等你需要的时候自己来翻。
+        </p>
+
+        <div class="footer-text">
+            基于真实体验整理 · 保持独立思考
+        </div>
+    </div>
+</body>
+</html>
