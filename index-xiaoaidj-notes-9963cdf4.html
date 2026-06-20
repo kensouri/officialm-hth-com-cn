@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小艾电竞 · 知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce9d8 0%, #fce3c9 40%, #fad5b3 100%);
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #2d241c;
+        }
+        .page-wrapper {
+            max-width: 1120px;
+            width: 100%;
+        }
+
+        /* header */
+        .hero-area {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 1.5rem;
+        }
+        .hero-area h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #442b1a;
+            background: linear-gradient(135deg, #7a4f31, #ab7550);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .hero-sub {
+            margin-top: 0.6rem;
+            font-size: 1.1rem;
+            color: #5e3f2a;
+            background: rgba(255, 243, 229, 0.6);
+            display: inline-block;
+            padding: 0.3rem 2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(180, 130, 90, 0.2);
+        }
+
+        /* 卡片网格 – 目录感 */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+        .card {
+            background: rgba(255, 248, 239, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 12px 28px rgba(100, 60, 30, 0.12), 0 0 0 1px rgba(255, 235, 210, 0.6) inset;
+            transition: transform 0.2s ease, box-shadow 0.25s;
+            border: 1px solid #f5ddd0;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 32px rgba(110, 70, 40, 0.16);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #4f321f;
+            margin-bottom: 1rem;
+            border-left: 5px solid #c9936a;
+            padding-left: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .card p, .card li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #3b2c1f;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+        .card ul li::before {
+            content: "▹ ";
+            color: #b47a53;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .card ul li {
+            margin-bottom: 0.5rem;
+        }
+        .tag {
+            display: inline-block;
+            background: #e9d3c0;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #3e291c;
+            font-weight: 500;
+            margin-top: 0.4rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* 特色板块 – 介绍/场景混合 */
+        .feature-panel {
+            background: rgba(255, 244, 230, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 36px;
+            padding: 2.2rem 2rem;
+            margin: 2.2rem 0 2.8rem;
+            border: 1px solid #f3d6be;
+            box-shadow: 0 6px 18px rgba(140, 90, 50, 0.08);
+        }
+        .feature-panel h3 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #563a25;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .feature-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .feature-item {
+            flex: 1 1 200px;
+            background: rgba(255, 252, 245, 0.6);
+            border-radius: 28px;
+            padding: 1.4rem 1.2rem;
+            text-align: center;
+            backdrop-filter: blur(2px);
+            border: 1px solid #edd6c2;
+        }
+        .feature-item strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #7b5437;
+            margin-bottom: 0.3rem;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4d3827;
+        }
+
+        /* 提示区 + FAQ摘要卡片 */
+        .info-stack {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.8rem;
+            margin: 2rem 0 2.2rem;
+        }
+        .tip-card, .faq-card {
+            background: rgba(255, 247, 235, 0.8);
+            backdrop-filter: blur(6px);
+            border-radius: 30px;
+            padding: 1.8rem 1.8rem 2rem;
+            border: 1px solid #ebd2bd;
+        }
+        .tip-card h4, .faq-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4f321f;
+            border-bottom: 2px dashed #dbb89b;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+        .faq-item .q {
+            font-weight: 600;
+            color: #5b3f2c;
+        }
+        .faq-item .a {
+            margin-top: 0.2rem;
+            padding-left: 0.6rem;
+            border-left: 3px solid #cba07f;
+            color: #3f2d1f;
+            font-size: 0.95rem;
+        }
+
+        /* 指向 https://index-xiaoaidj.com 的链接自然嵌入 */
+        .sentence-link {
+            background: #f2e0d0;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            display: inline-block;
+            color: #3e2a1b;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid #dec2ab;
+            transition: 0.2s;
+            margin: 0.4rem 0;
+        }
+        .sentence-link:hover {
+            background: #e9d3be;
+            border-color: #b48663;
+        }
+
+        /* 相关信息区 */
+        .related-info {
+            background: rgba(255, 239, 220, 0.5);
+            backdrop-filter: blur(3px);
+            border-radius: 30px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.8rem;
+            border: 1px solid #e1c9b6;
+        }
+        .related-info p {
+            font-size: 0.95rem;
+            color: #3e2c1e;
+            margin: 0.3rem 0;
+        }
+        .related-info a {
+            color: #6f4f34;
+            text-decoration: underline dotted 1.2px #b18563;
+            font-weight: 500;
+        }
+        .related-info a:hover {
+            text-decoration: underline solid;
+            color: #3a271b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 760px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .info-stack {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .hero-area h1 {
+                font-size: 2.3rem;
+            }
+            .feature-flex {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .card, .tip-card, .faq-card, .feature-panel {
+                padding: 1.2rem;
+            }
+            .hero-area h1 {
+                font-size: 1.9rem;
+            }
+        }
+        footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #705841;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- hero -->
+    <div class="hero-area">
+        <h1>小艾电竞 · 知识库</h1>
+        <div class="hero-sub">理解 · 赛事 · 视角</div>
+    </div>
+
+    <!-- 目录感卡片：2×2 -->
+    <div class="grid-layout">
+        <div class="card">
+            <h2>主题背景</h2>
+            <p>小艾电竞聚焦于电子竞技领域的信息整合与深度观察，从赛事体系、战队动态到版本更迭，尝试构建一个有条理的知识参考。这里没有冗余的资讯轰炸，更多是内容筛选与结构梳理。</p>
+            <span class="tag">#结构索引</span>
+        </div>
+        <div class="card">
+            <h2>内容脉络</h2>
+            <ul>
+                <li>主流项目赛程与赛果汇总</li>
+                <li>关键选手与战术演变记录</li>
+                <li>赛事规则与版本更新解析</li>
+                <li>社区讨论与赛事文化笔记</li>
+            </ul>
+            <span class="tag">#知识节点</span>
+        </div>
+        <div class="card">
+            <h2>阅读方式</h2>
+            <p>本知识库采用分层结构：入口页作为导航目录，各专题页提供更详尽的背景、数据和观点。你可以按兴趣板块进入，也可以利用标签筛选关联内容。</p>
+        </div>
+        <div class="card">
+            <h2>信息原则</h2>
+            <p>所有内容基于公开资料与赛事记录整理，力求客观、克制。不制造对立情绪，不预测赛果，仅呈现已知信息与合理分析框架。</p>
+        </div>
+    </div>
+
+    <!-- 介绍/场景区 -->
+    <div class="feature-panel">
+        <h3>适用场景与视角</h3>
+        <div class="feature-flex">
+            <div class="feature-item">
+                <strong>赛前速览</strong>
+                <p>快速了解对阵双方近期状态、历史交手、版本倾向，辅助形成自己的观赛思路。</p>
+            </div>
+            <div class="feature-item">
+                <strong>赛后复盘</strong>
+                <p>查阅关键回合数据、英雄选择逻辑、节奏转折点，加深对比赛细节的理解。</p>
+            </div>
+            <div class="feature-item">
+                <strong>知识积累</strong>
+                <p>梳理电竞发展脉络、战术更迭、规则变化，适合爱好者与轻度研究者。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示区 + FAQ摘要 -->
+    <div class="info-stack">
+        <div class="tip-card">
+            <h4>使用提示</h4>
+            <p style="margin-bottom: 0.6rem;">知识库各板块独立更新，部分专题仍在构建中。建议从「主题背景」卡片入手，逐步展开。</p>
+            <p>如果你对某个赛事或项目有深入兴趣，可留意页面底部的相关信息区。</p>
+            <p style="margin-top: 1rem;">🔍 导航示例：<br>想知道最近一次Major的赛程结构？直接查看对应项目页面。</p>
+        </div>
+        <div class="faq-card">
+            <h4>FAQ 摘要</h4>
+            <div class="faq-item">
+                <div class="q">Q: 知识库更新频率？</div>
+                <div class="a">A: 主要赛事期间保持同步更新，日常每周至少一次内容补充。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">Q: 是否包含所有项目？</div>
+                <div class="a">A: 目前覆盖五个主流项目，其他项目会逐步加入。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">Q: 可以贡献内容吗？</div>
+                <div class="a">A: 暂不接受直接提交，如有建议可通过站点相关渠道反馈。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子 -->
+    <div style="margin: 1.2rem 0 0.8rem; background: #fcf0e3; border-radius: 60px; padding: 0.8rem 1.5rem; display: inline-block; border: 1px solid #e5ceba;">
+        <p style="font-size: 1rem; color: #3b2b1d;">更多赛事数据与主题笔记，可移步至  <a href="https://index-xiaoaidj.com" class="sentence-link">小艾电竞</a>  查阅详细页面。</p>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="related-info">
+        <p><strong>相关信息</strong> · 当前知识库版本：v1.2 · 内容基于公开赛事资料整理</p>
+        <p>关联标签：#电竞笔记 #赛事结构 #版本观察 · 如有疑问可参考 <a href="https://index-xiaoaidj.com">小艾电竞</a> 更多章节</p>
+    </div>
+
+    <footer>© 知识库入口 · 持续构建中</footer>
+</div>
+</body>
+</html>
