@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>极速赛车 · 资料索引与信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f9fe;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #1e2a3a;
+      padding: 20px 16px 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 网格卡片风格的容器 */
+    .grid-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0, 60, 80, 0.06), 0 2px 6px rgba(0, 40, 60, 0.04);
+      padding: 28px 24px;
+      margin-bottom: 28px;
+      transition: box-shadow 0.2s ease;
+      border: 1px solid rgba(22, 163, 145, 0.12);
+    }
+
+    .grid-card:hover {
+      box-shadow: 0 12px 28px rgba(24, 131, 115, 0.10);
+    }
+
+    /* 蓝绿色点缀 */
+    .accent-badge {
+      display: inline-block;
+      background: #d6f0ec;
+      color: #0c6b5e;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 4px 12px;
+      border-radius: 40px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #0b2b34;
+      margin-bottom: 0.25rem;
+    }
+
+    .subhead {
+      color: #3b5c63;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      border-left: 5px solid #1f9a8a;
+      padding-left: 14px;
+      background: #e8f6f3;
+      border-radius: 0 12px 12px 0;
+      display: inline-block;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #0b4b47;
+      margin: 24px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px dashed #b2dfd9;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: #20333b;
+    }
+
+    a {
+      color: #117a6b;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(17, 122, 107, 0.3);
+      transition: border-color 0.15s, background 0.15s;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    a:hover, a:focus {
+      border-bottom-color: #0c5b50;
+      background: #dff1ed;
+      border-radius: 2px;
+    }
+
+    /* 引用提示卡片 */
+    .quote-tip {
+      background: #e4f3f0;
+      border-left: 6px solid #209484;
+      padding: 16px 20px;
+      border-radius: 18px;
+      margin: 28px 0 20px;
+      font-style: normal;
+      color: #12443d;
+      box-shadow: inset 0 0 0 1px rgba(32, 148, 132, 0.15);
+    }
+
+    .quote-tip::before {
+      content: "📋 整理备注";
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #0d7d6b;
+      margin-bottom: 6px;
+    }
+
+    .faq-item {
+      margin-bottom: 16px;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      color: #144b44;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .faq-question::before {
+      content: "▹";
+      color: #209484;
+      font-weight: 700;
+    }
+
+    .faq-answer {
+      padding-left: 20px;
+      margin-top: 4px;
+      color: #254a4a;
+    }
+
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin: 20px 0 8px;
+    }
+
+    .tag {
+      background: #e3f2ef;
+      color: #065b4f;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      border: 1px solid #b3d9d0;
+    }
+
+    .divider {
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, #1f9a8a, #a1d9cf);
+      border-radius: 4px;
+      margin: 28px 0 18px;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #4c6e6b;
+      border-top: 1px solid #cbe2dd;
+      padding-top: 20px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .btn-soft {
+      display: inline-block;
+      background: transparent;
+      border: 1.5px solid #209484;
+      color: #117a6b;
+      padding: 10px 28px;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: default;
+      margin: 8px 0 4px;
+      background: #f6fcfb;
+    }
+
+    .btn-soft:hover {
+      background: #d5f0ea;
+      border-color: #0e6b5d;
+      color: #06443b;
+    }
+
+    /* 移动端友好 */
+    @media (max-width: 600px) {
+      body {
+        padding: 16px 12px 36px;
+      }
+      .grid-card {
+        padding: 20px 16px;
+        border-radius: 20px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      .subhead {
+        font-size: 0.9rem;
+      }
+      .tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+      }
+      .quote-tip {
+        padding: 14px 16px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero 区域：标题 + 导语 -->
+  <div class="grid-card">
+    <span class="accent-badge">资料索引 · 信息整理</span>
+    <h1>极速赛车 · 从零散到有序</h1>
+    <div class="subhead">一份围绕<a href="https://home-jssc.com">极速赛车</a>的内容笔记与结构梳理</div>
+    <p style="font-size: 1.05rem; margin-top: 8px;">
+      过去几个月，我在收集和整理与赛车模拟、竞速资料相关的信息时，发现许多碎片化内容其实可以串成一条清晰的线索。这个页面算不上教程或指南，更像是一个带有注释的索引簿——把散落的知识点收拢，按自己的理解重新编排。
+    </p>
+    <div class="tag-grid">
+      <span class="tag">赛车数据</span>
+      <span class="tag">模拟器参考</span>
+      <span class="tag">赛事整理</span>
+      <span class="tag">术语表</span>
+      <span class="tag">对比笔记</span>
+    </div>
+  </div>
+
+  <!-- 多段正文 + 卡片风格 -->
+  <div class="grid-card">
+    <h2>① 为什么做资料整理</h2>
+    <p>
+      最开始只是出于好奇，把几篇关于赛车调校的帖子存了下来。后来发现，和<a href="https://home-jssc.com">极速赛车</a>相关的中文资料虽然不少，但分散在论坛、百科、视频评论区，很难一次理清。于是我开始按主题建文件夹：引擎参数、轮胎策略、赛道地图、涂装记录……整理本身变成了另一种学习。
+    </p>
+    <p>
+      这个过程里最明显的感受是：当信息被重新分类和标注之后，原来模棱两可的概念变得具体了。比如“转向过度”在不同车型下的表现差异，以前只看文字描述总觉得隔了一层，但把几个案例并排放到一起，差别就出来了。
+    </p>
+    <div class="quote-tip">
+      关于「极速赛车」的术语库目前收录了 40+ 词条，其中约三分之一来自玩家社区的口语表达，整理时尽量保留了原意并补充了对照解释。
+    </div>
+  </div>
+
+  <!-- 两列结构（视窗宽时展示） -->
+  <div class="two-col">
+    <div class="grid-card">
+      <h2>② 信息索引的三个原则</h2>
+      <p style="margin-bottom: 10px;">
+        我自己定了三条标准，保持索引简洁有用：
+      </p>
+      <ul style="list-style: none; padding-left: 0; margin-bottom: 8px;">
+        <li style="padding: 6px 0 6px 28px; background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22209484%22 stroke-width=%222%22><polyline points=%2220 6 9 17 4 12%22/></svg>') left center no-repeat; background-size: 16px;">来源可追溯：每条记录都附带原始链接或出处备注</li>
+        <li style="padding: 6px 0 6px 28px; background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22209484%22 stroke-width=%222%22><polyline points=%2220 6 9 17 4 12%22/></svg>') left center no-repeat; background-size: 16px;">避免过度解读：只记事实和直接经验，不渲染情绪</li>
+        <li style="padding: 6px 0 6px 28px; background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22209484%22 stroke-width=%222%22><polyline points=%2220 6 9 17 4 12%22/></svg>') left center no-repeat; background-size: 16px;">定期校验：三个月更新一次，删除失效或过时的条目</li>
+      </ul>
+      <p>
+        这些原则听起来简单，但执行起来最花时间的其实是“校验”这一步。有些论坛帖子两年没更新，里面的车辆数据已经改版了。
+      </p>
+    </div>
+
+    <div class="grid-card">
+      <h2>③ 几个常用场景</h2>
+      <p>
+        整理后的索引有几个实际用处：快速查找某条赛道的官方记录、对比不同代际车型的极速差异、以及了解赛事规则的基础框架。如果你平时也留意<a href="https://home-jssc.com">极速赛车</a>的各类讨论，可能用得上。
+      </p>
+      <p>
+        另外，我在索引里做了一个“常见误区”的短列表——比如有些人会把马力重量比和推重比混淆，或者把下压力和抓地力的概念套用错。这些对照笔记在和朋友讨论时意外地受欢迎。
+      </p>
+      <div style="margin-top: 14px;">
+        <span class="btn-soft">浏览精选笔记</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 + 引用访问句 -->
+  <div class="grid-card">
+    <h2>📌 几个常被问到的整理细节</h2>
+    <div class="faq-item">
+      <div class="faq-question">索引中的“极速”数据来源是哪里？</div>
+      <div class="faq-answer">主要来自官方技术手册、部分赛事报告以及经过交叉验证的玩家实测。同一车型不同调校下的数值会单独标注。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">这些资料会公开分享吗？</div>
+      <div class="faq-answer">目前以个人存档为主，部分摘要会整理成短文更新在关联站点。你可以多留意<a href="https://home-jssc.com">极速赛车</a>页面下的更新记录。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">是否包含模拟器或游戏内容？</div>
+      <div class="faq-answer">有少量涉及，主要是物理引擎的逻辑参考，但更多偏向现实赛车的数据和规则整理。模拟部分会单独用标签标出。</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p style="font-size: 1.05rem; font-weight: 400;">
+      如果你也在做类似的信息收集，或者对某个具体话题感兴趣，欢迎顺着<a href="https://home-jssc.com">极速赛车</a>这条线一起交流。整理从来不是终点，它只是让下一次查找变得更顺利一点。
+    </p>
+  </div>
+
+  <!-- 尾注 -->
+  <div class="footer-note">
+    <span style="background: #d6f0ec; padding: 2px 10px; border-radius: 30px; font-size: 0.75rem;">索引版本 · 2025</span>
+    <span style="margin-left: 14px; opacity: 0.7;">内容保持克制叙述，仅代表个人整理视角</span>
+  </div>
+
+</div>
+</body>
+</html>
